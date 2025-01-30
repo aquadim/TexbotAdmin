@@ -15,7 +15,7 @@ class HTML {
         self::insert("html-end");
     }
 
-    // Выводит в HTML файл из /components/{name}
+    // Выводит пагинацию
     public static function pagination(int $page_num, int $total, int $per_page, string $path) : void {
         self::insert(
             "pagination",
