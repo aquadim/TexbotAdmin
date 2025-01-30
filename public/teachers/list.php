@@ -31,7 +31,7 @@ $total = count($items);
                         <p>
                             <?= $teacher->getSurname() ?> <?= $teacher->getName() ?> <?= $teacher->getPatronymic() ?>
                         </p>
-                        <a href="#" class="btn btn-secondary">Редактировать</a>
+                        <a href="/teachers/edit.php?id=<?= $teacher->getId() ?>" class="btn btn-secondary">Редактировать</a>
                         <a href="#" class="btn btn-danger">Удалить</a>
                     </div>
                 </div>

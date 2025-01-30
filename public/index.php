@@ -39,7 +39,7 @@ HTML::insert("navbar");
                     <h5 class="card-title"><i class="fa-solid fa-chalkboard-user"></i> Управление преподавателями</h5>
                     <div class="list-group list-group-flush">
                         <a href="/teachers/list.php" class="list-group-item list-group-item-action"><i class="fa-solid fa-list"></i> Список</a>
-                        <a href="/loh.php" class="list-group-item list-group-item-action"><i class="fa-solid fa-add"></i> Добавить</a>
+                        <a href="/teachers/new.php" class="list-group-item list-group-item-action"><i class="fa-solid fa-add"></i> Добавить</a>
                     </div>
                 </div>
             </div>

@@ -26,6 +26,21 @@
             <li><a class="dropdown-item" href="/reports/functions.php">Использование функций Техбота</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa-solid fa-chalkboard-user"></i> Преподаватели
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/teachers/list.php">Список</a></li>
+            <li><a class="dropdown-item" href="/teachers/new.php">Добавить</a></li>
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout.php"><i class="fa-solid fa-right-from-bracket"></i> Выход</a>
         </li>

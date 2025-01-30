@@ -2,6 +2,7 @@
 // Класс работы с HTML компонентами
 
 namespace TexAdmin;
+use TexAdmin\Entities\Employee;
 
 class HTML {
 
@@ -26,6 +27,10 @@ class HTML {
                 "path" => $path
             ]
         );
+    }
+
+    public static function teacherForm(?Employee $e) {
+        self::insert("employeeForm", ["e" => $e]);
     }
     
     // Выводит в HTML файл из /components/{name}
