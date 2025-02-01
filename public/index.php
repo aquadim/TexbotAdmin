@@ -44,6 +44,16 @@ HTML::insert("navbar");
                 </div>
             </div>
         </div>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa-solid fa-comment"></i> Обратная связь</h5>
+                    <div class="list-group list-group-flush">
+                        <a href="/feedback/list.php" class="list-group-item list-group-item-action"><i class="fa-solid fa-list"></i> Список ошибок</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

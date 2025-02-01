@@ -3,7 +3,7 @@
 $total_pages = ceil($view_data["total"] / $view_data["per_page"]);
 
 // Назад
-$back_disabled = $view_data["page_num"] == 1;
+$back_disabled = $view_data["page_num"] == 1 || $total_pages < 2;
 if (!$back_disabled) {
   $back_url = "/" . $view_data["path"] . "/list.php?page=" . ($view_data["page_num"] - 1);
   $back_class = "page-item";
@@ -13,7 +13,7 @@ if (!$back_disabled) {
 }
 
 // Дальше
-$next_disabled = $view_data["page_num"] == $total_pages;
+$next_disabled = $view_data["page_num"] == $total_pages || $total_pages < 2;
 if (!$next_disabled) {
   $next_url = "/" . $view_data["path"] . "/list.php?page=" . ($view_data["page_num"] + 1);
   $next_class = "page-item";
