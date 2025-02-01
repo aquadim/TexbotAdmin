@@ -20,7 +20,7 @@ class Database {
 
         // Получение менеджера сущностей
         $config = ORMSetup::createAttributeMetadataConfiguration(
-            paths: array(root_dir . '/Entities'),
+            paths: array(root_dir . '/TexAdmin/Entities'),
             isDevMode: true,
         );
         $this->entity_manager = new EntityManager($this->connection, $config);
