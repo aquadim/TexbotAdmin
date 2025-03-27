@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card-header">Авторизация не выполнена</div>
             <div class="card-body">
                 <p class="card-text">
-                    Пароль не совпадает <?= hash('sha256', $_POST["password"]) ?>
+                    Пароль не совпадает
                 </p>
             </div>
         </div>
