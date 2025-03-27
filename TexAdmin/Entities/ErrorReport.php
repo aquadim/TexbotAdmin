@@ -63,7 +63,11 @@ class ErrorReport {
     }
     
     public function getStepsToReproduce() : string {
-        return $this->steps_to_reproduce;
+        if ($this->steps_to_reproduce == null) {
+            return "<Не указано>";
+        } else {
+            return $this->steps_to_reproduce;
+        }
     }
 
     public function getCreatedAt() : DateTimeImmutable {
