@@ -23,7 +23,8 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/reports/usercount.php">Зарегистрированные пользователи</a></li>
-            <li><a class="dropdown-item" href="/reports/functions.php">Использование функций Техбота</a></li>
+            <li><a class="dropdown-item" href="/reports/functions-by-group.php">Использование функций Техбота (по группам)</a></li>
+            <li><a class="dropdown-item" href="/reports/functions-by-fn.php">Использование функций Техбота (по видам функций)</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">

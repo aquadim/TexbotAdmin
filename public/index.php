@@ -28,7 +28,8 @@ HTML::insert("navbar");
                     <h5 class="card-title"><i class="fa-solid fa-chart-simple"></i> Отчёты</h5>
                     <div class="list-group list-group-flush">
                         <a href="/reports/usercount.php" class="list-group-item list-group-item-action"><i class="fa-solid fa-users"></i> Количество зарегистрированных пользователей</a>
-                        <a href="/reports/functions.php" class="list-group-item list-group-item-action"><i class="fa-solid fa-bars"></i> Использование функций Техбота (по группам)</a>
+                        <a href="/reports/functions-by-group.php" class="list-group-item list-group-item-action"><i class="fa-solid fa-bars"></i> Использование функций Техбота (по группам)</a>
+                        <a href="/reports/functions-by-fn.php" class="list-group-item list-group-item-action"><i class="fa-solid fa-bars"></i> Использование функций Техбота (по видам функций)</a>
                     </div>
                 </div>
             </div>

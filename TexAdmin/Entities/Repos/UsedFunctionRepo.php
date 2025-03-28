@@ -11,8 +11,8 @@ use DateTimeImmutable;
 
 class UsedFunctionRepo extends EntityRepository {
 
-    // Возвращает статистику использования функций
-    public function getStats(
+    // Возвращает статистику использования функций по конкретной группе
+    public function getStatsByGroup(
         DateTimeImmutable $start,
         DateTimeImmutable $end,
         CollegeGroup $group
@@ -21,7 +21,6 @@ class UsedFunctionRepo extends EntityRepository {
         "SELECT COUNT(uf.id) AS cnt, fn.id AS fnid, uf.used_at " .
         "FROM " . UF::class . " uf ".
         "JOIN uf.fn fn " .
-        "JOIN uf.caller_group gr " .
         "WHERE uf.used_at BETWEEN :start AND :end " .
         "AND uf.caller_group = :callerGroup " .
         "GROUP BY uf.used_at, fn.id";
@@ -31,6 +30,29 @@ class UsedFunctionRepo extends EntityRepository {
             'start' => $start,
             'end' => $end,
             'callerGroup' => $group
+        ]);
+        return $query->getResult();
+    }
+
+    // Возвращает статистику использования функций по конкретному виду функции
+    public function getStatsByFunction(
+        DateTimeImmutable $start,
+        DateTimeImmutable $end,
+        TexbotFunction $func
+    ) {
+        $dql =
+        "SELECT COUNT(uf.id) AS cnt, gr.id AS grid, uf.used_at " .
+        "FROM " . UF::class . " uf ".
+        "JOIN uf.caller_group gr " .
+        "WHERE uf.used_at BETWEEN :start AND :end " .
+        "AND uf.fn = :function " .
+        "GROUP BY uf.used_at, gr.id";
+
+        $query = $this->getEntityManager()->createQuery($dql);
+        $query->setParameters([
+            'start' => $start,
+            'end' => $end,
+            'function' => $func
         ]);
         return $query->getResult();
     }

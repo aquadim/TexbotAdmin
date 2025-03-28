@@ -3,16 +3,15 @@
 // в формате JSON
 /*
 {
-    "2024-10-31": {
-        "<function_id>": 108,
-        "<function_id>": 21,
-        "<function_id>": 150
+    "<id функции>": {
+        "2024-10-31": 108,
+        "2024-11-01": 21,
+        "...": 150,
     },
-    "2024-11-01": {
+    "...": {
         ...
     },
     ...
-}
 */
 require_once '../../bootstrap.php';
 require root_dir."/auth.php";
@@ -41,12 +40,12 @@ $em = Database::getEM();
 
 $uf_repo = $em->getRepository(UsedFunction::class);
 
-$start_date = new DateTimeImmutable($_POST["dateStart"]);
-$end_date   = new DateTimeImmutable($_POST["dateEnd"]);
+$start_date     = (new DateTimeImmutable($_POST["dateStart"]))->setTime(0,0,0);
+$end_date       = (new DateTimeImmutable($_POST["dateEnd"]))->setTime(23,59,59);
 $group      = $em->find(CollegeGroup::class, $_POST["groupId"]);
 
 $output     = [];
-$data       = $uf_repo->getStats($start_date, $end_date, $group);
+$data       = $uf_repo->getStatsByGroup($start_date, $end_date, $group);
 
 foreach ($data as $row) {
     $count = $row["cnt"];

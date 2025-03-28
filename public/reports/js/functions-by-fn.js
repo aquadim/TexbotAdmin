@@ -1,17 +1,17 @@
 const formSettings = document.getElementById("settings");
 const dataArea = document.getElementById("dataArea");
 
-let currentGroupId;
+let currentFunctionId;
 
 // Названия
 // {id: название}
-const functionNames = new Map();
-const groupNames = new Map();
+const functionNames = new Map();    // Названия видов функций
+const groupNames = new Map();       // Названия групп
 
 formSettings.addEventListener('submit', (e) => {
     const fd = new FormData(formSettings);
-    currentGroupId = fd.get("groupId");
-    fetch("/api/functions.php", {
+    currentFunctionId = fd.get("functionTypeId");
+    fetch("/api/functions-usage-by-fn.php", {
         method: 'POST',
         body: fd
     }).then(async function(r) {
@@ -25,7 +25,7 @@ function updateChart(data) {
     const allTraces = [];
     const layout = {
         title: {
-            text: "Использование функций группой " + groupNames.get(currentGroupId)
+            text: "Использование функции " + functionNames.get(currentFunctionId)
         }
     };
 
@@ -36,10 +36,10 @@ function updateChart(data) {
     }
 
     // Проход по всем функциям
-    Object.keys(data).forEach(fnId => {
-        const info = data[fnId];
+    Object.keys(data).forEach(groupId => {
+        const info = data[groupId];
         
-        const functionName = functionNames.get(fnId);
+        const groupName = groupNames.get(groupId);
         const xValues = [];
         const yValues = [];
 
@@ -57,7 +57,7 @@ function updateChart(data) {
             x: xValues,
             y: yValues,
             mode: 'lines+markers',
-            name: functionName
+            name: groupName
         };
 
         allTraces.push(trace);
@@ -66,28 +66,28 @@ function updateChart(data) {
     Plotly.newPlot(dataArea, allTraces, layout, config);
 }
 
-// Сбор названий функций
-fetch("/api/function-types.php", {
+// Сбор всех видов функций
+fetch("/api/all-function-types.php", {
     method: "POST"
 }).then(async function(r) {
-    const response = await r.json();
-    response.forEach(i => {
-       functionNames.set(i.id.toString(), i.name);
+    const data = await r.json();
+    const functionTypesSelect = document.getElementById("functionTypeId");
+    data.forEach(ft => {
+        functionNames.set(ft.id.toString(), ft.name);
+        
+        const opt = document.createElement("option");
+        opt.textContent = ft.name;
+        opt.value = ft.id;
+        functionTypesSelect.append(opt);
     });
 });
 
-// Сбор всех групп
+// Сбор всех имён групп
 fetch("/api/all-groups.php", {
     method: "POST"
 }).then(async function(r) {
     const data = await r.json();
-    const groupSelect = document.getElementById("groupId");
     data.forEach(g => {
         groupNames.set(g.id.toString(), g.name);
-        
-        const opt = document.createElement("option");
-        opt.textContent = g.name;
-        opt.value = g.id;
-        groupSelect.append(opt);
     });
 });

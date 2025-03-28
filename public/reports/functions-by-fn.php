@@ -1,15 +1,15 @@
 <?php
-// Страница отчёта статистики использования функций по группам
+// Страница отчёта статистики использования функций по видам функций
 require_once '../../bootstrap.php';
 require root_dir."/auth.php";
 
 use TexAdmin\HTML;
-HTML::start("Использование функций (по группам)");
+HTML::start("Использование функций (по видам функций)");
 HTML::insert("navbar");
 ?>
 
 <div class="container p-3">
-    <h1>Статистика использования функций (по группам)</h1>
+    <h1>Статистика использования функций (по видам функций)</h1>
     <p>Сколько раз студенты использовали функции за определённый период.</p>
 
     <!--Параметры-->
@@ -24,8 +24,8 @@ HTML::insert("navbar");
                 <input type="date" name="dateEnd" class="form-control" id="dateEnd" required="required">
             </div>
             <div class="col">
-                <label for="groupId" class="form-label"><i class="fa-solid fa-users"></i> Группа</label>
-                <select name="groupId" class="form-select" id="groupId" required="required"></select>
+                <label for="functionTypeId" class="form-label"><i class="fa-solid fa-users"></i> Вид функции</label>
+                <select name="functionTypeId" class="form-select" id="functionTypeId" required="required"></select>
             </div>
         </div>
         <div class="row mt-3">
@@ -39,6 +39,6 @@ HTML::insert("navbar");
 
 <script src="/plotly/plotly-2.35.2.min.js"></script>
 <script src="/plotly/plotly-locale-ru-latest.js"></script>
-<script src="js/functions.js"></script>
+<script src="js/functions-by-fn.js"></script>
 
 <?php HTML::end(); ?>
